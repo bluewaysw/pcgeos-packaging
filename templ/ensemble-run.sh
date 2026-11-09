@@ -20,9 +20,9 @@ write_start_log() {
     LOG_TIMESTAMP="$(date '+%Y-%m-%d %H:%M:%S %z' 2>/dev/null || date)"
 
     if [ "$#" -gt 0 ]; then
-        printf '[%s] start: %s %s\n' "$LOG_TIMESTAMP" "$0" "$*" > "$LOG_FILE"
+        printf '[%s] start: %s %s\n' "$LOG_TIMESTAMP" "$0" "$*" >> "$LOG_FILE"
     else
-        printf '[%s] start: %s\n' "$LOG_TIMESTAMP" "$0" > "$LOG_FILE"
+        printf '[%s] start: %s\n' "$LOG_TIMESTAMP" "$0" >> "$LOG_FILE"
     fi
 }
 
