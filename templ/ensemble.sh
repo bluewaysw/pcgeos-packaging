@@ -5,6 +5,7 @@ SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 UPDATE_MARKER="${SCRIPT_DIR}/update.txt"
 RUN_LAUNCHER="${SCRIPT_DIR}/BASEBOX/ensemble-run.sh"
 LOG_FILE="${SCRIPT_DIR}/ensemble.log"
+: > "$LOG_FILE"
 
 log_line() {
     printf '%s\n' "$1" >> "$LOG_FILE"
@@ -34,8 +35,6 @@ promote_pending_launcher() {
 if [ -f "$UPDATE_MARKER" ]; then
     promote_pending_launcher "${SCRIPT_DIR}/BASEBOX/ensemble-run.sh"
     promote_pending_launcher "${SCRIPT_DIR}/BASEBOX/ensemble-run.cmd"
-
-    rm -f "$UPDATE_MARKER" || log_line "update: failed to delete marker $UPDATE_MARKER"
 fi
 
 if [ ! -f "$RUN_LAUNCHER" ]; then

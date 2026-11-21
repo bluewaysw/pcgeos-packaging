@@ -5,6 +5,7 @@ set "SCRIPT_DIR=%~dp0"
 set "UPDATE_MARKER=%SCRIPT_DIR%update.txt"
 set "RUN_LAUNCHER=%SCRIPT_DIR%BASEBOX\ensemble-run.cmd"
 set "LOG_FILE=%SCRIPT_DIR%ensemble.log"
+type nul > "%LOG_FILE%"
 
 if exist "%UPDATE_MARKER%" (
     call :promote_pending_launcher "%SCRIPT_DIR%BASEBOX\ensemble-run.cmd"
@@ -12,9 +13,6 @@ if exist "%UPDATE_MARKER%" (
 
     call :promote_pending_launcher "%SCRIPT_DIR%BASEBOX\ensemble-run.sh"
     if errorlevel 1 exit /b 1
-
-    del /q "%UPDATE_MARKER%" >nul 2>&1
-    if exist "%UPDATE_MARKER%" >> "%LOG_FILE%" echo update: failed to delete marker "%UPDATE_MARKER%"
 )
 
 if not exist "%RUN_LAUNCHER%" (

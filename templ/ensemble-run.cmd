@@ -18,7 +18,7 @@ set "BASE_CONFIG_FILE=%ENSEMBLE_DIR%\basebox.conf"
 set "LAUNCH_TEMPLATE_CONFIG_FILE=%ENSEMBLE_DIR%\BASEBOX\basebox.launch.templ.conf"
 set "LAUNCH_CONFIG_FILE=%ENSEMBLE_DIR%\BASEBOX\basebox.launch.conf"
 set "LOG_FILE=%ENSEMBLE_DIR%\ensemble.log"
-> "%LOG_FILE%" echo [%DATE% %TIME%] start: %~nx0 %*
+>> "%LOG_FILE%" echo [%DATE% %TIME%] start: %~nx0 %*
 >> "%LOG_FILE%" echo basebox: "%BASEBOX_EXEC%"
 
 if "%LAUNCH_DIR_NAME%"=="" (
